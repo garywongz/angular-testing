@@ -1,0 +1,106 @@
+<section class="header padding">
+  <h1 class="title">GET IN TOUCH</h1>
+  <p class="subtitle">
+    Want to start mining your own cryptocurrencies or have any questions? You're
+    almost there!
+  </p>
+</section>
+
+<section class="corpus padding">
+  <h1 class="title">ONE FINAL STEP...</h1>
+  <p class="subtitle">
+    In order to better serve you, all account openings are checked one by one.
+  </p>
+  <p class="subtitle">
+    Simply complete the form below and a member of our team will contact you
+    shortly, to simply help you clarify any questions you may have, or if you
+    with to open an account directly.
+  </p>
+  <p class="warning">
+    However, please note that it is now TOO LATE (since May 31, 2021) to join
+    us.
+  </p>
+  <p class="warning">Orders are currently suspended indefinitely.</p>
+  <p class="warning">
+    Please enter your details below to be notified when we reopen
+  </p>
+</section>
+
+<section class="form padding">
+  <form [formGroup]="submitForm" (ngSubmit)="submitResponses()">
+    <div class="firstName">
+      <label class="required" for="firstName">First name</label>
+      <input id="firstName" type="text" formControlName="firstName" />
+    </div>
+    <div class="lastName">
+      <label class="required" for="lastName">Last name</label>
+      <input id="lastName" type="text" formControlName="lastName" />
+    </div>
+    <div class="email">
+      <label class="required" for="email">Email</label>
+      <input id="email" type="text" formControlName="email" />
+    </div>
+    <div class="country">
+      <label class="required" for="country">Phone number</label>
+      <div class="phoneBox">
+        <select class="countrySelect" formControlName="phoneCountry">
+          <option *ngFor="let c of phoneCountry" [ngValue]="c">{{ c }}</option>
+        </select>
+        <input
+          class="phoneField"
+          id="phone"
+          type="text"
+          formControlName="phone"
+        />
+      </div>
+    </div>
+    <div class="message">
+      <label class="required" for="message">Message</label>
+      <textarea
+        id="message"
+        placeholder="Tell us more about your expectations."
+        type="textarea"
+        formControlName="message"
+      >
+      </textarea>
+      <div style="color: red;" *ngIf="this.submitForm.get('message')?.errors?.['required']">
+        Please complete this required field.
+      </div>
+    </div>
+    <div class="language">
+      <label for="language">Preffered language</label>
+      <select formControlName="language">
+        <option *ngFor="let c of preferredLanguage" [ngValue]="c">
+          {{ c }}
+        </option>
+      </select>
+    </div>
+    <div class="promoCode">
+      <label for="promoCode">If you have a promo code or if someone told you about us, please enter the details here: </label>
+      <input id="promoCode" type="text" formControlName="promoCode" />
+    </div>
+    <button class="submitButton" type="submit" [disabled]="!submitForm.valid">Submit</button>
+  </form>
+</section>
+
+<section class="bottom padding">
+  <h1 class="title">JOIN 5,000+ FELLOW SUMMIT MINERS</h1>
+  <img class="logo" src="/assets/discord.png" alt="discord" />
+  <h3 class="subtitle">Join us on Discord</h3>
+  <p class="text">
+    Join us on Discord and get
+    <span class="bold">expert cryptocurrencies tips</span> straight to you.
+  </p>
+  <p class="text">
+    <span class="bold">Go behind the scenes</span> of Summit Mining (photos,
+    videos, interviews, etc.)
+  </p>
+  <p class="text">Become an even more profitable cryptocurrency miner.</p>
+  <div class="boxs">
+    <div class="box" (click)="openLink(box.link)" *ngFor="let box of boxs">
+      <img class="boxLogo" [src]="box.logo" [alt]="box.title" />
+      <h6 class="boxTitle">{{ box.title }}</h6>
+      <p class="boxSubtitle">{{ box.subtitle }}</p>
+    </div>
+  </div>
+</section>
